@@ -18,7 +18,11 @@ public class UserServiceImp implements UserService {
 	public Iterable<User> findAllUsers() {
 		return userDAO.findAll();
 	}
-	
-	
+
+	@Override
+	public User findUser(String username, String password) {
+		return userDAO.findUser(username, password);
+	}
+
 
 }
