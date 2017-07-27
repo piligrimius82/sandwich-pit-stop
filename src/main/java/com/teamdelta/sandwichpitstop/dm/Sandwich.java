@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -80,27 +81,56 @@ public class Sandwich implements java.io.Serializable {
 	public String getBread() {
 		return this.bread;
 	}
+	
+	@Transient
+	public BreadEnum getBreadEnum() {
+		return BreadEnum.findById(this.bread);
+	}
 
 	public void setBread(String bread) {
 		this.bread = bread;
 	}
+	
+	@Transient
+	public void setBread(BreadEnum breadEnum) {
+		this.bread = breadEnum.getId();
+	}	
 
 	@Column(name = "substance", nullable = false, length = 2)
 	public String getSubstance() {
 		return this.substance;
 	}
-
+	
+	@Transient
+	public SubstanceEnum getSubstanceEnum() {
+		return SubstanceEnum.findById(this.bread);
+	}
 	public void setSubstance(String substance) {
 		this.substance = substance;
+	}
+	
+	@Transient
+	public void setSubstance(SubstanceEnum substanceEnum) {
+		this.substance = substanceEnum.getId();
 	}
 
 	@Column(name = "cheese", nullable = false, length = 2)
 	public String getCheese() {
 		return this.cheese;
 	}
+	
+	@Transient
+	public CheeseEnum getCheeseEnum(String cheese) {
+		return CheeseEnum.findById(cheese);
+	}
 
 	public void setCheese(String cheese) {
 		this.cheese = cheese;
+	}
+	
+	@Transient
+	public void setCheese(CheeseEnum cheeseEnum) {
+		this.cheese = cheeseEnum.getId();
 	}
 
 	@Column(name = "tomatos", nullable = false)
@@ -125,9 +155,19 @@ public class Sandwich implements java.io.Serializable {
 	public String getDressing() {
 		return this.dressing;
 	}
+	
+	@Transient
+	public DressingEnum getDressingEnum() {
+		return DressingEnum.findById(this.dressing);
+	}
 
 	public void setDressing(String dressing) {
 		this.dressing = dressing;
+	}
+	
+	@Transient
+	public void setDressing(DressingEnum dressingEnum) {
+		this.dressing = dressingEnum.getId();
 	}
 
 	@Column(name = "onions", nullable = false)
@@ -152,9 +192,19 @@ public class Sandwich implements java.io.Serializable {
 	public String getStatus() {
 		return this.status;
 	}
+	
+	@Transient
+	public SandwichStatusEnum getStatusEnum() {
+		return SandwichStatusEnum.findById(this.status);
+	}
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	@Transient
+	public void setStatus(SandwichStatusEnum statusEnum) {
+		this.status = statusEnum.getId();
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
