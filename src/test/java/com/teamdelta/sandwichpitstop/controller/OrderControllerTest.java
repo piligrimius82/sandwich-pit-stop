@@ -46,7 +46,6 @@ public class OrderControllerTest {
 	}
 	
 	@Test
-	@Ignore("This will work but Order needs .equals() and .hashCode()")
 	public void findOpenOrders() throws Exception {
 		// Setup
 		List<Order> orders = new ArrayList<>();
