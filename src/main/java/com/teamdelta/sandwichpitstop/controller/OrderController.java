@@ -12,7 +12,7 @@ import lombok.Getter;
 
 @RestController
 @RequestMapping("api/order-processing")
-public class OrdrerController {
+public class OrderController {
 	
 	@Autowired
 	@Getter
