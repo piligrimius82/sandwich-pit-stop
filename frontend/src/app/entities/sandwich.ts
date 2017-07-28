@@ -13,4 +13,5 @@ export class Sandwich {
     placedTimestamp: Date;
     completeTimestamp: Date;
     preparerId: number;
+    price: number;
 }
