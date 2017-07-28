@@ -1,15 +1,17 @@
 package com.teamdelta.sandwichpitstop.services;
 
+import static com.teamdelta.sandwichpitstop.util.DataUtil.getRandomSandwiches;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -26,17 +28,19 @@ public class OrderServiceImpTest {
 	@Mock
 	private OrderDAO orderDAO;
 	
+	@Captor
+	private ArgumentCaptor<Order> orderCaptor;
+	
 	@Test
 	public void findOpenOrders() {
 		// Setup
 		List<Order> orders = new ArrayList<>();
 		for(int i = 0; i < 5; i++) {
 			Order order = new Order();
-			order.setCompleteTimestamp(null);
 			order.setCustomerName("Customer " + i);
 			order.setOrderId(i);
 			order.setPlacedTimestamp(new Date());
-			order.setSandwiches(null);
+			order.setSandwiches(getRandomSandwiches());
 			
 			orders.add(order);
 		}
@@ -50,4 +54,23 @@ public class OrderServiceImpTest {
 		assertEquals(orders, result);
 	}
 
+	@Test
+	public void submitOrder() {
+		// Setup
+		Order order = new Order();
+		order.setCustomerName("Customer 1");
+		order.setPlacedTimestamp(new Date());
+		order.setSandwiches(getRandomSandwiches());
+		
+		when(orderDAO.save(orderCaptor.capture())).thenReturn(order);
+
+		// Test
+		Order result = orderService.submitOrder(order);
+		
+		// Verify
+		assertEquals(order, orderCaptor.getValue());
+		assertEquals(order, result);
+	}
+	
+	
 }

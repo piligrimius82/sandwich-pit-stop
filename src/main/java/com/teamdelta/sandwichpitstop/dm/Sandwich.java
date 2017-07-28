@@ -86,6 +86,7 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
+	@JsonIgnore
 	public BreadEnum getBreadEnum() {
 		return BreadEnum.findById(this.bread);
 	}
@@ -105,6 +106,7 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
+	@JsonIgnore
 	public SubstanceEnum getSubstanceEnum() {
 		return SubstanceEnum.findById(this.bread);
 	}
@@ -123,6 +125,7 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
+	@JsonIgnore
 	public CheeseEnum getCheeseEnum(String cheese) {
 		return CheeseEnum.findById(cheese);
 	}
@@ -160,6 +163,7 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
+	@JsonIgnore
 	public DressingEnum getDressingEnum() {
 		return DressingEnum.findById(this.dressing);
 	}
@@ -197,6 +201,7 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
+	@JsonIgnore
 	public SandwichStatusEnum getStatusEnum() {
 		return SandwichStatusEnum.findById(this.status);
 	}
