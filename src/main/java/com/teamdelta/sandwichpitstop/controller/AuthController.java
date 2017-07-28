@@ -1,8 +1,8 @@
 package com.teamdelta.sandwichpitstop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamdelta.sandwichpitstop.dm.User;
@@ -18,7 +18,7 @@ public class AuthController {
 	@Getter
 	private UserService userService;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping(value={"","/"})
 	public User login(String username, String password) {
 		return userService.findUser(username, password);
 	}

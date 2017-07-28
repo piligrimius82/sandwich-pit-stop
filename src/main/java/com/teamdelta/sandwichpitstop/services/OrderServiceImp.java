@@ -16,5 +16,10 @@ public class OrderServiceImp implements OrderService {
 	public Iterable<Order> findOpenOrders() {
 		return orderDAO.findOpenOreders();
 	}
+	
+	@Override
+	public Order submitOrder(Order order) {
+		return orderDAO.save(order);
+	}
 
 }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum SubstanceEnum {
-	STAKE("ST","Stake"),CHICKEN("CN","Chicken"),HAM("HM","Ham"),EGGS("EG","Eggs");
+	STEAK("ST","Steak"),CHICKEN("CN","Chicken"),HAM("HM","Ham"),EGGS("EG","Eggs");
 	
 	private String id;
 	private String name;

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamdelta.sandwichpitstop.dm.User;
-import com.teamdelta.sandwichpitstop.dm.UserRoleEnum;
 import com.teamdelta.sandwichpitstop.services.UserService;
 
 import lombok.Getter;
