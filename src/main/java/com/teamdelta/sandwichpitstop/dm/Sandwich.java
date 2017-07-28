@@ -43,6 +43,7 @@ public class Sandwich implements java.io.Serializable {
 	private String status;
 	private Date placedTimestamp;
 	private Date completeTimestamp;
+	private double price;
 
 	public Sandwich() {
 	}
@@ -234,5 +235,16 @@ public class Sandwich implements java.io.Serializable {
 	public void setCompleteTimestamp(Date completeTimestamp) {
 		this.completeTimestamp = completeTimestamp;
 	}
+
+	@Column(name = "price", nullable = false)
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	
 
 }
