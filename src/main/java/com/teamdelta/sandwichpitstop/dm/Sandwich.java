@@ -16,7 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.EqualsAndHashCode;
 
@@ -60,7 +61,7 @@ public class Sandwich implements java.io.Serializable {
 		this.sandwichId = sandwichId;
 	}
 
-	@JsonIgnore
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id", nullable = false)
 	public Order getOrder() {
@@ -87,7 +88,6 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
-	@JsonIgnore
 	public BreadEnum getBreadEnum() {
 		return BreadEnum.findById(this.bread);
 	}
@@ -107,10 +107,10 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
-	@JsonIgnore
 	public SubstanceEnum getSubstanceEnum() {
 		return SubstanceEnum.findById(this.bread);
 	}
+	
 	public void setSubstance(String substance) {
 		this.substance = substance;
 	}
@@ -126,7 +126,6 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
-	@JsonIgnore
 	public CheeseEnum getCheeseEnum(String cheese) {
 		return CheeseEnum.findById(cheese);
 	}
@@ -164,7 +163,6 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
-	@JsonIgnore
 	public DressingEnum getDressingEnum() {
 		return DressingEnum.findById(this.dressing);
 	}
@@ -202,7 +200,6 @@ public class Sandwich implements java.io.Serializable {
 	}
 	
 	@Transient
-	@JsonIgnore
 	public SandwichStatusEnum getStatusEnum() {
 		return SandwichStatusEnum.findById(this.status);
 	}
@@ -245,6 +242,13 @@ public class Sandwich implements java.io.Serializable {
 		this.price = price;
 	}
 	
+	@Transient
+	public void convertToEnumIds() {
+		this.bread = BreadEnum.findByName(this.bread).getId();
+		this.cheese = CheeseEnum.findByName(this.cheese).getId();
+		this.dressing = DressingEnum.findByName(this.dressing).getId();
+		this.substance = SubstanceEnum.findByName(this.substance).getId();
+		this.status = SandwichStatusEnum.findByName(this.status).getId();
+	}
 	
-
 }

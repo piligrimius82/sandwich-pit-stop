@@ -4,6 +4,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.EqualsAndHashCode;
 
@@ -74,7 +79,8 @@ public class Order implements java.io.Serializable {
 		this.customerName = customerName;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+	@JsonManagedReference
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "order",cascade = CascadeType.ALL)
 	public Set<Sandwich> getSandwiches() {
 		return this.sandwiches;
 	}

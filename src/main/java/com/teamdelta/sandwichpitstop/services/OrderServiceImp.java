@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.teamdelta.sandwichpitstop.dao.OrderDAO;
 import com.teamdelta.sandwichpitstop.dm.Order;
+import com.teamdelta.sandwichpitstop.dm.Sandwich;
 
 @Service
 public class OrderServiceImp implements OrderService {
@@ -19,7 +20,11 @@ public class OrderServiceImp implements OrderService {
 	
 	@Override
 	public Order submitOrder(Order order) {
+		for (Sandwich sandwich: order.getSandwiches()) {
+			sandwich.convertToEnumIds();
+		}
 		return orderDAO.save(order);
 	}
+	
 
 }
