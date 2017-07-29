@@ -1,5 +1,5 @@
 export class Sandwich {
-    sandwichId: number;
+    sandwichId?: number;
     bread: string;
     substance: string;
     cheese: string;

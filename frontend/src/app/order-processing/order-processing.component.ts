@@ -13,37 +13,35 @@ import{Sandwich} from '../entities/sandwich';
 export class OrderProcessingComponent implements OnInit {
 
   private openOrders:Order[];
-  private date:Date;
+  private date:Date = new Date();
   
-  private sandwich: Sandwich[] = [
+  private sandwich: Sandwich = 
   {
-    sandwichId: 1,
-    bread: "string",
-    substance: "string",
-    cheese: "string",
+    bread: "White",
+    substance: "Chicken",
+    cheese: "Swiss",
     tomatos: false,
     lettuce: true,
-    dressing: "string",
+    dressing: "Mustard",
     onions: false,
     comments: "string",
     orderId: 12,
-    status: "string",
+    status: "New Order",
     placedTimestamp: this.date,
     completeTimestamp: this.date,
     preparerId: 1001,
     price: 36
   }
-  ]
+  
 
-    private myOrder: Order[] =[
+    private myOrder: Order =
     {
-      orderId: 678,
       placedTimestamp: this.date,
-      completeTimestamp: this.date,
-      customerName: "string",
-      sandwiches: this.sandwich
+      completeTimestamp: null,
+      customerName: "Dudeness",
+      sandwiches: [this.sandwich,this.sandwich]
   }
-  ]
+  
   
 
   constructor(private orderService: OrderService) { 
@@ -52,10 +50,10 @@ export class OrderProcessingComponent implements OnInit {
 
   ngOnInit() {
     this.orderService.getOpenOrders().subscribe(res=> this.openOrders = res);
-    this.orderService.saveOrders(this.myOrder).subscribe(
-      (response) => console.log(response),
-      (error) => console.log
-    );
+    // this.orderService.saveOrder(this.myOrder).subscribe(
+    //   (response) => console.log(response),
+    //   (error) => console.log
+    // );
   }
 
 

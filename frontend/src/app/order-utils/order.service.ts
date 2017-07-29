@@ -24,7 +24,7 @@ export class OrderService {
             .map(response => <Order[]>response.json());
     }
 
-    saveOrders(myArray){
-        return this.http.post('api/order-processing', myArray);
+    saveOrder(order:Order){
+        return this.http.post('api/order-processing', order);
     }
 }
