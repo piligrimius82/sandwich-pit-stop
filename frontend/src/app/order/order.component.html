@@ -1,3 +1,16 @@
-<p>
-  order works!
-</p>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Order Id</th>
+      <th>Sandwich</th>
+      <th>Total Order</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let person of people" class="active">
+      <td>Order Id: {{person.orderId}}</td>
+      <td *ngFor="let group of person.sandwich">{{group.meat}} {{group.cheese}} Sandwich</td>
+      <td *ngFor="let total of person.sandwich">{{total.price}}</td>
+    </tr>
+  </tbody>
+</table>
