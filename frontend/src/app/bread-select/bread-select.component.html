@@ -1,0 +1,43 @@
+<h2>Please select your bread: </h2>
+
+<div class="row">
+  <div class="col-md-6">
+
+    <md-card class="ingredient_card">
+      <md-card-header class="ingredient_header">
+        <md-card-title><h4><b>White Bread</b></h4></md-card-title>
+      </md-card-header>
+      <button md-button (click)= "setBread('white')">
+      <img md-card-image src="assets/img/whiteBread.jpg">
+   </button>
+      <md-card-content>
+        <p>
+          White bread has a smooth texture. Our bread is made fresh daily and is always gluten free. 
+        </p>
+      </md-card-content>
+    </md-card>
+
+
+  </div>
+  <div class="col-md-6">
+    <md-card class="ingredient_card">
+      <md-card-header class="ingredient_header">
+        <md-card-title><h4><b>Wheat Bread</b></h4></md-card-title>
+      </md-card-header>
+      <button md-button (click)= "setBread('wheat')">
+      <img md-card-image src="assets/img/wheat.jpg">
+      </button>
+      <md-card-content>
+        <p>
+          Wheat bread is rougher in texture. Our bread is made fresh daily and is always gluten free. 
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="btn_left">
+    <button md-fab routerLink="/meat"> <i class="material-icons">arrow_forward</i> </button>
+  </div>
+</div>

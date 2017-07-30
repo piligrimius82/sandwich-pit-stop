@@ -1,0 +1,21 @@
+<!-- Displays the main header for the application -->
+
+<md-toolbar color="primary">
+  <span>
+    <a routerLink="/" class="home_link">Sandwich Pit Stop</a>
+  </span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="header_contents"></span>
+
+  <span>
+    <button md-raised-button routerLink="/order-cancelled" class="cancel_button">
+      CANCEL 
+    </button>
+  </span>
+</md-toolbar>
+
+<!-- Displays each component (page) of the application -->
+<router-outlet></router-outlet>
+
+

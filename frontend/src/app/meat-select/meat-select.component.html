@@ -1,0 +1,46 @@
+<h2>Please select your meat: </h2>
+<div class="row">
+  <div class="col-md-6">
+
+    <md-card class="ingredient_card">
+      <md-card-header class="ingredient_header">
+        <md-card-title><h4><b>Honey Ham</b></h4></md-card-title>
+      </md-card-header>
+      <button md-button (click)= "setMeat('ham')">
+      <img md-card-image src="assets/img/ham.jpg">
+   </button>
+      <md-card-content>
+        <p>
+          Honey ham from Virginia.
+        </p>
+      </md-card-content>
+    </md-card>
+
+
+  </div>
+  <div class="col-md-6">
+    <md-card class="ingredient_card">
+      <md-card-header class="ingredient_header">
+        <md-card-title><h4><b>Smoked Turkey</b></h4></md-card-title>
+      </md-card-header>
+      <button md-button (click)= "setMeat('turkey')">
+      <img md-card-image src="assets/img/turkey.jpg">
+      </button>
+      <md-card-content>
+        <p>
+          Locally produced, fresh turkey
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 btn_left">
+    <button md-fab routerLink="/bread"> <i class="material-icons">arrow_back</i> </button>
+  </div>
+
+  <div class="col-md-6 btn_right">
+    <button md-fab routerLink="/cheese"> <i class="material-icons">arrow_forward</i> </button>
+  </div>
+</div>

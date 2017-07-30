@@ -1,0 +1,46 @@
+<h2>Please select your condiments: </h2>
+<div class="row">
+  <div class="col-md-6">
+
+    <md-card class="ingredient_card">
+      <md-card-header class="ingredient_header">
+        <md-card-title><h4><b>Mayonnaise</b></h4></md-card-title>
+      </md-card-header>
+      <button md-button (click)= "setCondiment('mayo')">
+      <img md-card-image src="assets/img/mayo.jpg">
+   </button>
+      <md-card-content>
+        <p>
+          Thick and creamy mayonnaise made from scratch in our kitchen.
+        </p>
+      </md-card-content>
+    </md-card>
+
+
+  </div>
+  <div class="col-md-6">
+    <md-card class="ingredient_card">
+      <md-card-header class="ingredient_header">
+        <md-card-title><h4><b>Ketchup</b></h4></md-card-title>
+      </md-card-header>
+      <button md-button (click)= "setCondiment('ketchup')">
+      <img md-card-image src="assets/img/ketchup.jpg">
+      </button>
+      <md-card-content>
+        <p>
+          Sweet and zesty ketchup from Jeinz.
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 btn_left">
+    <button md-fab routerLink="/topping"> <i class="material-icons">arrow_back</i> </button>
+  </div>
+
+  <div class="col-md-6 btn_right">
+    <button md-fab routerLink="/add"> <i class="material-icons">arrow_forward</i> </button>
+  </div>
+</div>
