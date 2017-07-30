@@ -1,3 +1,4 @@
+/**Core Angular Functionality imports */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule }    from '@angular/http';
@@ -5,9 +6,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdButtonModule, MdToolbarModule, MdCardModule} from '@angular/material'; 
 import {Routes, RouterModule} from '@angular/router';
 
-import { AppComponent } from './app.component';
+/** Routing Imports */
+import {AppRoutingModule} from './app-routing.module';
 
-//import {AppRoutingModule} from './app-routing.module';
+/** Component Imports */
+import { AppComponent } from './app.component';
 import { OrderComponent } from './order/order.component';
 import { OrderProcessingComponent } from './order-processing/order-processing.component';
 import { LoginComponent } from './login/login.component';
@@ -19,66 +22,39 @@ import { ToppingSelectComponent } from './topping-select/topping-select.componen
 import { CondimentSelectComponent } from './condiment-select/condiment-select.component';
 import { CancelPageComponent } from './cancel-page/cancel-page.component';
 import { AdditionalComponent } from './additional/additional.component';
+/** Placeholders to connect Ishmael's components */
+/** import { OrderSummaryComponent} from './order-summary/order-summary.component'; */
+/** import { OrderSucessfulComponent} from './order-success/order-success.component'; */
 
 import {OrderService} from './order-utils/order.service';
 import {SandwichService} from './order-utils/sandwich.service';
 
 
-
-/** Placeholders to connect Ishmael's components */
-/** import { OrderSummaryComponent} from './order-summary/order-summary.component'; */
-/** import { OrderSucessfulComponent} from './order-success/order-success.component'; */
-
-/**
- * list of routes (pages) for the application
- */
-const appRoutes: Routes =[
-{path: '', component: MainPageComponent},
-{path: 'bread', component: BreadSelectComponent},
-{path: 'meat', component: MeatSelectComponent},
-{path: 'cheese', component: CheeseSelectComponent},
-{path: 'topping', component: ToppingSelectComponent},
-{path: 'condiment', component: CondimentSelectComponent},
-{path: 'order-cancelled', component: CancelPageComponent},
-{path: 'add', component: AdditionalComponent},
-{path: 'login', component: LoginComponent},
-{path: 'order-processing', component: OrderProcessingComponent},
-
-/** Placeholders to connect Ishmael's components */
-/** {path: 'summary', component: OrderSummaryComponent}, */
-/** {path: 'succuess', component: OrderSuccessfulComponent}, */
-
-];
-
 @NgModule({
   declarations: [
     AppComponent,
-    OrderComponent,
-    OrderProcessingComponent,
-    LoginComponent,
     MainPageComponent,
     BreadSelectComponent,
     MeatSelectComponent,
     CheeseSelectComponent,
-    ToppingSelectComponent,
     CondimentSelectComponent,
+    ToppingSelectComponent,
+    LoginComponent,
+    OrderComponent,
+    AdditionalComponent,
     CancelPageComponent,
-    AdditionalComponent
-
-    /** Placeholders to connect Ishmael's components */
-    /** OrderSuccessfulComponent */
-    /** OrderSummaryComponent */
+    OrderProcessingComponent
   ],
   imports: [
     BrowserModule,
-    //AppRoutingModule,
+    AppRoutingModule,
     HttpModule,
     BrowserAnimationsModule,
     MdButtonModule, 
     MdToolbarModule,
     MdCardModule,
-    RouterModule.forRoot(appRoutes)
-  ],
+    RouterModule
+    ],
   providers: [OrderService, SandwichService],
   bootstrap: [AppComponent]
 })
