@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MdCardModule} from '@angular/material';
 import {SandwichService} from '../order-utils/sandwich.service';
+import { Sandwich} from "../entities/sandwich";
+
 
 @Component({
   selector: 'app-bread-select',
@@ -16,6 +18,7 @@ export class BreadSelectComponent implements OnInit {
   }
 
   setBread(bread: string){
+    console.log("This bread works" + bread);
     this.sandwichService.changeBread(bread);
   }
 

@@ -7,10 +7,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let person of people" class="active">
-      <td>Order Id: {{person.orderId}}</td>
+    <tr *ngFor="let out of output" class="active">
+      <td>Order Id: {{out.orderId}}</td>
+      <td>Order Id: {{out.substance}} and {{out.cheese}} Sandwich </td>
+      <td>Order Id: ${{out.price}}</td>
+      <!--dummy file-->
+      <!-- <td>Order Id: {{person.orderId}}</td>
       <td *ngFor="let group of person.sandwich">{{group.meat}} {{group.cheese}} Sandwich</td>
-      <td *ngFor="let total of person.sandwich">{{total.price}}</td>
+      <td *ngFor="let total of person.sandwich">{{total.price}} + {{ bread }}</td> -->
     </tr>
   </tbody>
 </table>

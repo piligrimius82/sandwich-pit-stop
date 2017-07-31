@@ -30,6 +30,8 @@ const appRoutes: Routes =[
 {path: 'add', component: AdditionalComponent},
 {path: 'login', component: LoginComponent},
 {path: 'order-processing', component: OrderProcessingComponent},
+{path: 'order', component: OrderComponent},
+
 
 /** Placeholders to connect Ishmael's components */
 /** {path: 'summary', component: OrderSummaryComponent}, */

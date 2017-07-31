@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Order} from '../entities/order';
 import { OrderService } from '../order-utils/order.service';
+import { SandwichService } from '../order-utils/sandwich.service';
+import { Sandwich} from "../entities/sandwich";
+
 
 
 @Component({
@@ -8,11 +11,14 @@ import { OrderService } from '../order-utils/order.service';
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
+
 export class OrderComponent implements OnInit {
 
   private orderArray: any[];
+  private json: string;
+  bread: string;
 
-
+  output: any[];
   //An example file json array of an order
   people: any[] = [
     {
@@ -27,10 +33,23 @@ export class OrderComponent implements OnInit {
     },
   ];
 
-  constructor(private orderService: OrderService) { }
+  constructor(private sandwichService: SandwichService) { }
 
   ngOnInit() {
-      this.orderService.getOpenOrders().subscribe(res=> this.orderArray = res);
+    this.getMyBread();
+    this.createJson();
+      // console.log(JSON.parse(JSON.stringify(this.sandwichService.getSandwich())));
+  }
+
+  getMyBread(){
+    this.bread = this.sandwichService.getBread();
+    return this.sandwichService.getBread();
+  }
+
+  createJson(){
+    this.json = JSON.stringify(this.sandwichService);
+    this.output = Array.of(JSON.parse(this.json));
+    console.log(this.output);
   }
 
 }
