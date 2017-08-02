@@ -18,7 +18,6 @@ export class BreadSelectComponent implements OnInit {
   }
 
   setBread(bread: string){
-    console.log("This bread works" + bread);
     this.sandwichService.changeBread(bread);
   }
 

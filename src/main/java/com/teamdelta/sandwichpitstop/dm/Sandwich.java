@@ -17,7 +17,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.EqualsAndHashCode;
 
@@ -86,7 +85,7 @@ public class Sandwich implements java.io.Serializable {
 	public String getBread() {
 		return this.bread;
 	}
-	
+
 	@Transient
 	public BreadEnum getBreadEnum() {
 		return BreadEnum.findById(this.bread);
@@ -95,26 +94,26 @@ public class Sandwich implements java.io.Serializable {
 	public void setBread(String bread) {
 		this.bread = bread;
 	}
-	
+
 	@Transient
 	public void setBread(BreadEnum breadEnum) {
 		this.bread = breadEnum.getId();
-	}	
+	}
 
 	@Column(name = "substance", nullable = false, length = 2)
 	public String getSubstance() {
 		return this.substance;
 	}
-	
+
 	@Transient
 	public SubstanceEnum getSubstanceEnum() {
 		return SubstanceEnum.findById(this.bread);
 	}
-	
+
 	public void setSubstance(String substance) {
 		this.substance = substance;
 	}
-	
+
 	@Transient
 	public void setSubstance(SubstanceEnum substanceEnum) {
 		this.substance = substanceEnum.getId();
@@ -124,7 +123,7 @@ public class Sandwich implements java.io.Serializable {
 	public String getCheese() {
 		return this.cheese;
 	}
-	
+
 	@Transient
 	public CheeseEnum getCheeseEnum(String cheese) {
 		return CheeseEnum.findById(cheese);
@@ -133,7 +132,7 @@ public class Sandwich implements java.io.Serializable {
 	public void setCheese(String cheese) {
 		this.cheese = cheese;
 	}
-	
+
 	@Transient
 	public void setCheese(CheeseEnum cheeseEnum) {
 		this.cheese = cheeseEnum.getId();
@@ -161,7 +160,7 @@ public class Sandwich implements java.io.Serializable {
 	public String getDressing() {
 		return this.dressing;
 	}
-	
+
 	@Transient
 	public DressingEnum getDressingEnum() {
 		return DressingEnum.findById(this.dressing);
@@ -170,7 +169,7 @@ public class Sandwich implements java.io.Serializable {
 	public void setDressing(String dressing) {
 		this.dressing = dressing;
 	}
-	
+
 	@Transient
 	public void setDressing(DressingEnum dressingEnum) {
 		this.dressing = dressingEnum.getId();
@@ -198,7 +197,7 @@ public class Sandwich implements java.io.Serializable {
 	public String getStatus() {
 		return this.status;
 	}
-	
+
 	@Transient
 	public SandwichStatusEnum getStatusEnum() {
 		return SandwichStatusEnum.findById(this.status);
@@ -207,7 +206,7 @@ public class Sandwich implements java.io.Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+
 	@Transient
 	public void setStatus(SandwichStatusEnum statusEnum) {
 		this.status = statusEnum.getId();
@@ -235,20 +234,23 @@ public class Sandwich implements java.io.Serializable {
 
 	@Column(name = "price", nullable = false)
 	public double getPrice() {
-		return price;
+		return this.price;
 	}
 
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 	@Transient
 	public void convertToEnumIds() {
 		this.bread = BreadEnum.findByName(this.bread).getId();
 		this.cheese = CheeseEnum.findByName(this.cheese).getId();
 		this.dressing = DressingEnum.findByName(this.dressing).getId();
 		this.substance = SubstanceEnum.findByName(this.substance).getId();
+		if (this.status == null) {
+			this.status = SandwichStatusEnum.NEW_ORDER.getName();
+		}
 		this.status = SandwichStatusEnum.findByName(this.status).getId();
 	}
-	
+
 }

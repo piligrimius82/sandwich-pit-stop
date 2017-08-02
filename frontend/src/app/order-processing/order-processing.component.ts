@@ -9,13 +9,13 @@ import{Sandwich} from '../entities/sandwich';
   styleUrls: ['./order-processing.component.css'],
   providers: [OrderService]
 })
-  
+
 export class OrderProcessingComponent implements OnInit {
 
   private openOrders:Order[];
   private date:Date = new Date();
   /** 
-  private sandwich: Sandwich = 
+  private sandwich: Sandwich =
   {
     bread: "White",
     substance: "Chicken",
@@ -32,7 +32,7 @@ export class OrderProcessingComponent implements OnInit {
     preparerId: 1001,
     price: 36
   }
-  
+
 
     private myOrder: Order =
     {
@@ -42,10 +42,10 @@ export class OrderProcessingComponent implements OnInit {
       sandwiches: [this.sandwich,this.sandwich]
   }
     */
-  
-  
 
-  constructor(private orderService: OrderService) { 
+
+
+  constructor(private orderService: OrderService) {
   }
 
 

@@ -25,6 +25,7 @@ export class OrderService {
     }
 
     saveOrder(order:Order){
-        return this.http.post('api/order-processing', order);
+        console.log("Posting to: '" + this.ordersUrl + "' with value: " + JSON.stringify(order));
+        return this.http.post(this.ordersUrl, order);
     }
 }

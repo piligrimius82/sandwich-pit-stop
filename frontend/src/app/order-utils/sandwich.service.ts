@@ -1,7 +1,9 @@
-import { Sandwich} from "../entities/sandwich";
+import { Sandwich } from "../entities/sandwich";
 import { Injectable } from '@angular/core';
 
 export class SandwichService {
+
+  private sandwich: Sandwich;
 
     private sandwichId?: number;
     private bread: string;
@@ -18,68 +20,47 @@ export class SandwichService {
     private completeTimestamp: Date;
     private preparerId: number;
     private price: number;
-    
+
     private sandwichService: SandwichService;
 
     constructor(){
-        this.tomatos = false;
-        this.lettuce = false;
-        this.onions = false;
+      this.sandwich = new Sandwich();
+      this.sandwich.tomatos = false;
+      this.sandwich.lettuce = false;
+      this.sandwich.onions = false;
+      this.sandwich.price = 3.00;
     }
-    
 
     public changeBread(bread: string){
-        this.bread = bread;
-        this.price = 3.00;
-        this.orderId = this.orderId + 1;
-        console.log("Bread changed "+ this.bread);
-        console.log("Price changed "+ this.price);
-        console.log("orderId changed" + this.orderId);
+        this.sandwich.bread = bread;
     }
 
     public changeSubstance(meat: string){
-        this.substance = meat;
-
-        console.log("Meat changed "+ this.substance);
+        this.sandwich.substance = meat;
     }
 
     public changeCheese(cheese:string){
-        this.cheese = cheese;
-        console.log("Cheese changed "+this.cheese);
+        this.sandwich.cheese = cheese;
     }
 
     public changeTopping(topping: string){
-        if(topping =="tomato"){
-            this.tomatos = true;
-            console.log("Topping changed "+ topping+ "to "+ this.valueOf);
+        if(topping == "Tomato"){
+            this.sandwich.tomatos = true;
         }
-        else if(topping == "lettuce"){
-            this.lettuce = true;
-            console.log("Topping changed "+ topping+"to "+ this.valueOf);
+        else if(topping == "Lettuce"){
+            this.sandwich.lettuce = true;
         }
-         else if(topping == "onion"){
-            this.onions = true;
-            console.log("Topping changed "+ topping+"to "+ this.valueOf);
+         else if(topping == "Onion"){
+            this.sandwich.onions = true;
         }
         else {}
-        
     }
-    
+
     public changeDressing(condiment: string){
-        this.dressing = condiment;
-        console.log("Condiment changed "+this.dressing);
+        this.sandwich.dressing = condiment;
     }
 
-    getBread(){
-        return this.bread;
-    }
-
-    getMeat(){
-        return this.substance;
-    }
-
-    getCheese(){
-        return this.cheese;
+    public getSandwich(){
+        return this.sandwich;
     }
 }
-

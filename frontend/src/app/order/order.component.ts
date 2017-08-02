@@ -14,42 +14,22 @@ import { Sandwich} from "../entities/sandwich";
 
 export class OrderComponent implements OnInit {
 
-  private orderArray: any[];
-  private json: string;
-  bread: string;
-
-  output: any[];
-  //An example file json array of an order
-  people: any[] = [
-    {
-      'orderId': '1',
-      'sandwich': [
-        {
-          "meat": "Chicken",
-          "cheese": "Cheddar",
-          "price": "$3.00"
-        }
-      ]
-    },
-  ];
-
-  constructor(private sandwichService: SandwichService) { }
+  constructor(private sandwichService: SandwichService, private orderService: OrderService) { }
 
   ngOnInit() {
-    this.getMyBread();
-    this.createJson();
-      // console.log(JSON.parse(JSON.stringify(this.sandwichService.getSandwich())));
-  }
+    var sandwich = this.sandwichService.getSandwich();
+    sandwich.placedTimestamp = new Date();
 
-  getMyBread(){
-    this.bread = this.sandwichService.getBread();
-    return this.sandwichService.getBread();
-  }
+    var order = new Order();
+    order.placedTimestamp = new Date();
+    order.customerName = "Customer X";
+    order.sandwiches = [sandwich];
 
-  createJson(){
-    this.json = JSON.stringify(this.sandwichService);
-    this.output = Array.of(JSON.parse(this.json));
-    console.log(this.output);
+    // console.log(JSON.stringify(order));
+    this.orderService.saveOrder(order).subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+    );
   }
 
 }
