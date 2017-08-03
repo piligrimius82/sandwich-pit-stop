@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SandwichService} from '../order-utils/sandwich.service';
+import { OrderService } from '../order-utils/order.service';
 
 @Component({
   selector: 'app-condiment-select',
@@ -8,13 +8,12 @@ import {SandwichService} from '../order-utils/sandwich.service';
 })
 export class CondimentSelectComponent implements OnInit {
 
-  constructor(private sandwichService: SandwichService) { }
+  constructor(private orderService:OrderService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  setCondiment(condiment: string){
-    this.sandwichService.changeDressing(condiment)
+  setCondiment(condiment:string){
+    this.orderService.getCurrentSandwich().dressing = condiment;
   }
 
 }

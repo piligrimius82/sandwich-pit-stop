@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SandwichService} from '../order-utils/sandwich.service';
+import { OrderService } from '../order-utils/order.service';
 
 
 @Component({
@@ -9,12 +9,11 @@ import {SandwichService} from '../order-utils/sandwich.service';
 })
 export class MeatSelectComponent implements OnInit {
 
-  constructor(private sandwichService: SandwichService) { }
+  constructor(private orderService:OrderService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  setMeat(meat: string){
-    this.sandwichService.changeSubstance(meat);
+  setMeat(meat:string){
+    this.orderService.getCurrentSandwich().substance = meat;
   }
 }

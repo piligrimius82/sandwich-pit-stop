@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule }    from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdToolbarModule, MdCardModule} from '@angular/material'; 
+import {MdButtonModule, MdToolbarModule, MdCardModule} from '@angular/material';
 import {Routes, RouterModule} from '@angular/router';
 
 /** Routing Imports */
@@ -27,7 +27,6 @@ import { AdditionalComponent } from './additional/additional.component';
 /** import { OrderSucessfulComponent} from './order-success/order-success.component'; */
 
 import {OrderService} from './order-utils/order.service';
-import {SandwichService} from './order-utils/sandwich.service';
 
 
 @NgModule({
@@ -50,12 +49,12 @@ import {SandwichService} from './order-utils/sandwich.service';
     AppRoutingModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdButtonModule, 
+    MdButtonModule,
     MdToolbarModule,
     MdCardModule,
     RouterModule
     ],
-  providers: [OrderService, SandwichService],
+  providers: [OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

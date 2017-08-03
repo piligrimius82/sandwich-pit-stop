@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OrderService } from './order-utils/order.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private orderService:OrderService) { }
+
+  ngOnInit() {}
+
+  cancelClicked() {
+    this.orderService.cancelOrder();
+  }
+
+  isOrdering() {
+    return this.orderService.getCurrentOrder() != null;
+  }
 }

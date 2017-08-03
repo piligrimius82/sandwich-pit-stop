@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MdCardModule} from '@angular/material';
-import {SandwichService} from '../order-utils/sandwich.service';
-import { Sandwich} from "../entities/sandwich";
-
+import { MdCardModule } from '@angular/material';
+import { OrderService } from '../order-utils/order.service';
 
 @Component({
   selector: 'app-bread-select',
@@ -12,13 +10,11 @@ import { Sandwich} from "../entities/sandwich";
 })
 export class BreadSelectComponent implements OnInit {
 
-  constructor(private sandwichService: SandwichService) { }
+  constructor(private orderService:OrderService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  setBread(bread:string){
+    this.orderService.getCurrentSandwich().bread = bread;
   }
-
-  setBread(bread: string){
-    this.sandwichService.changeBread(bread);
-  }
-
 }

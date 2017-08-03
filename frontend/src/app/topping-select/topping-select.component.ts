@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SandwichService} from '../order-utils/sandwich.service';
+import { OrderService } from '../order-utils/order.service';
 
 
 @Component({
@@ -9,12 +9,22 @@ import {SandwichService} from '../order-utils/sandwich.service';
 })
 export class ToppingSelectComponent implements OnInit {
 
-  constructor(private sandwichService: SandwichService) { }
+  constructor(private orderService:OrderService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   setToppings(topping:string){
-    this.sandwichService.changeTopping(topping);
+    var sandwich = this.orderService.getCurrentSandwich();
+    if(topping == "Tomato"){
+        sandwich.tomatos = true;
+    }
+    else if(topping == "Lettuce"){
+        sandwich.lettuce = true;
+    }
+    else if(topping == "Onion"){
+        sandwich.onions = true;
+    }
+    else {}
   }
 
 }

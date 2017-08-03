@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../order-utils/order.service';
 
 @Component({
   selector: 'app-additional',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdditionalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private orderService:OrderService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  select(additional:boolean) {
+    this.orderService.finishSandwich();
+    if(additional) {
+      this.orderService.additionalSandwich();
+    }
   }
-
 }
