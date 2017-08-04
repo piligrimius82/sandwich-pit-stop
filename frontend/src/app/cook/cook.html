@@ -1,0 +1,52 @@
+<h4>Current Orders:</h4>
+<ul>
+    <li *ngFor="let order of activeOrders" class="currOrders">
+    Order #{{order.orderId}}
+
+    <ul>
+        <li *ngFor="let sandwich of order.sandwiches" class="currSandwiches">
+        {{sandwich.bread}}&emsp; {{sandwich.substance}}&emsp; {{sandwich.cheese}}&emsp;
+		{{sandwich.tomatos ? "Yes" : "No"}} tomatoes&emsp; {{sandwich.lettuce ? "Yes" : "No"}} lettuce&emsp;
+		{{sandwich.onions ? "Yes" : "No"}} onions&emsp; {{sandwich.dressing}}
+        </li>
+		<hr>
+    </ul>
+    </li>
+</ul>
+
+<!--table functionality breaks when trying to run 2nd loop through sandwich array -->
+<!-- <table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+ 
+    </tr>
+  </thead>
+  <tbody>
+	<tr *ngFor="let order of activeOrders" class=''>
+		<td colspan="2">Order #{{order.orderId}}</td>
+	</tr>
+    <tr *ngFor="let sandwich of order.sandwiches" class=""> 
+     <tr>
+	 <td>{{order.sandwich.bread}}</td>
+       <td>{{sandwich.substance}}</td>
+      <td>{{sandwich.cheese}}</td>
+      <td>{{sandwich.tomatos ? "Yes" : "No"}} tomatoes</td>
+      <td>{{sandwich.lettuce ? "Yes" : "No"}} lettuce</td>
+      <td>{{sandwich.onions ? "Yes" : "No"}} onions</td>
+      <td>{{sandwich.dressing}}</td> 
+
+    </tr> 
+
+  </tbody>
+</table> -->
+
+
+<button (click)="cancelOrder()">Cancel Order</button>
+<button (click)="completeOrder()">Complete Order</button>
