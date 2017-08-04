@@ -26,7 +26,8 @@ import { AdditionalComponent } from './additional/additional.component';
 /** import { OrderSummaryComponent} from './order-summary/order-summary.component'; */
 /** import { OrderSucessfulComponent} from './order-success/order-success.component'; */
 
-import {OrderService} from './order-utils/order.service';
+import { OrderService } from './order-utils/order.service';
+import { CookComponent } from './cook/cook.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {OrderService} from './order-utils/order.service';
     OrderComponent,
     AdditionalComponent,
     CancelPageComponent,
-    OrderProcessingComponent
+    OrderProcessingComponent,
+	CookComponent
   ],
   imports: [
     BrowserModule,

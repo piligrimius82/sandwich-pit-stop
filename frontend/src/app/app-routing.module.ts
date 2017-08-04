@@ -15,6 +15,7 @@ import { AdditionalComponent } from './additional/additional.component';
 /** Placeholders to connect Ishmael's components */
 /** import { OrderSummaryComponent} from './order-summary/order-summary.component'; */
 /** import { OrderSucessfulComponent} from './order-success/order-success.component'; */
+import { CookComponent } from './cook/cook.component';
 
 /**
  * list of routes (pages) for the application
@@ -31,6 +32,7 @@ const appRoutes: Routes =[
 {path: 'login', component: LoginComponent},
 {path: 'order-processing', component: OrderProcessingComponent},
 {path: 'order', component: OrderComponent},
+{path: 'cook', component: CookComponent},
 
 
 /** Placeholders to connect Ishmael's components */
