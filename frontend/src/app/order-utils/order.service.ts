@@ -49,6 +49,13 @@ export class OrderService {
 
       return this.http.post(this.ordersUrl, this.currentOrder);
     }
+	
+	completeOrder() {
+		this.currentOrder.completeTimestamp = new Date;
+		this.currentOrder.sandwiches.forEach(sandwich => {
+        sandwich.completeTimestamp = new Date;
+      });
+	}
 
     // Getters
     getCurrentSandwich():Sandwich {
@@ -58,4 +65,5 @@ export class OrderService {
     getCurrentOrder():Order {
       return this.currentOrder;
     }
+	
 }
