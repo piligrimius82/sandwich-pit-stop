@@ -27,6 +27,7 @@ import { AdditionalComponent } from './additional/additional.component';
 /** import { OrderSucessfulComponent} from './order-success/order-success.component'; */
 
 import { OrderService } from './order-utils/order.service';
+import { SandwichService } from './order-utils/sandwich.service';
 import { CookComponent } from './cook/cook.component';
 
 
@@ -56,7 +57,10 @@ import { CookComponent } from './cook/cook.component';
     MdCardModule,
     RouterModule
     ],
-  providers: [OrderService],
+  providers: [
+    OrderService,
+    SandwichService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
