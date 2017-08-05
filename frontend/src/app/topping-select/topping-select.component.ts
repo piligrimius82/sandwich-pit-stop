@@ -34,6 +34,8 @@ export class ToppingSelectComponent implements OnInit {
 
   constructor(private orderService: OrderService) { }
 
+  private sandwich = this.orderService.getCurrentSandwich();
+
   ngOnInit() { }
 
   setToppings(topping: string) {
@@ -54,18 +56,21 @@ export class ToppingSelectComponent implements OnInit {
       this.changeOne ='off';
       this.changeTwo ='off';
       this.changeThree ='off';
+      this.sandwich.tomatos = false;
+      this.sandwich.lettuce = false;
+      this.sandwich.onions = false;
     }
 
-    var sandwich = this.orderService.getCurrentSandwich();
+    
 
     if (topping == "Tomato") {
-      sandwich.tomatos = true;
+      this.sandwich.tomatos = true;
     }
     else if (topping == "Lettuce") {
-      sandwich.lettuce = true;
+      this.sandwich.lettuce = true;
     }
     else if (topping == "Onion") {
-      sandwich.onions = true;
+      this.sandwich.onions = true;
     }
     else { }
   }
