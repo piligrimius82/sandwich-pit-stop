@@ -2,13 +2,11 @@
 <div class="row">
   <div class="col-md-6">
 
-    <md-card class="ingredient_card">
+    <md-card class="ingredient_card" [@selectAnimation]='changeOne' (click)= "setToppings('Lettuce')" >
       <md-card-header class="ingredient_header">
         <md-card-title><h4><b>Iceberg Lettuce</b></h4></md-card-title>
       </md-card-header>
-      <button md-button (click)= "setToppings('Lettuce')">
       <img md-card-image src="assets/img/lettuce.jpeg">
-   </button>
       <md-card-content>
         <p>
           Organic, crisp icebeg lettuce from Arizona. Certified organic produce.
@@ -19,13 +17,11 @@
 
   </div>
   <div class="col-md-6">
-    <md-card class="ingredient_card">
+    <md-card class="ingredient_card" [@selectAnimation]='changeTwo' (click)= "setToppings('Tomato')" >
       <md-card-header class="ingredient_header">
         <md-card-title><h4><b>Tomato</b></h4></md-card-title>
       </md-card-header>
-      <button md-button (click)= "setToppings('Tomato')">
       <img md-card-image src="assets/img/tomato.jpg">
-      </button>
       <md-card-content>
         <p>
           Deep, red flavorful tomatoes from California. Certified organic produce.
@@ -34,6 +30,39 @@
     </md-card>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-6">
+
+    <md-card class="ingredient_card" [@selectAnimation]='changeThree' (click)= "setToppings('Onion')" >
+      <md-card-header class="ingredient_header">
+        <md-card-title><h4><b>Onion</b></h4></md-card-title>
+      </md-card-header>
+      <img md-card-image src="assets/img/onion.jpg">
+      <md-card-content>
+        <p>
+          Sweet red and white onions imported from South Korea and Japan. Certified Organic Produce.
+        </p>
+      </md-card-content>
+    </md-card>
+
+
+  </div>
+  <div class="col-md-6">
+    <md-card class="ingredient_card" [@selectAnimation]='changeFour' (click)= "setToppings('None')" >
+      <md-card-header class="ingredient_header">
+        <md-card-title><h4><b>None</b></h4></md-card-title>
+      </md-card-header>
+      <img md-card-image src="assets/img/none.jpg">
+      <md-card-content>
+        <p>
+          No toppings wanted.
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
 
 <div class="row">
   <div class="col-md-6 btn_left">

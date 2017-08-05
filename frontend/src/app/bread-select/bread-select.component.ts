@@ -1,20 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { MdCardModule } from '@angular/material';
 import { OrderService } from '../order-utils/order.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-bread-select',
   templateUrl: './bread-select.component.html',
   styleUrls: ['./bread-select.component.css'],
-  providers: []
+  providers: [],
+  animations: [
+    trigger(
+      'selectAnimation', [
+        state('off', style({
+          backgroundColor: 'fff',
+          transform: 'scale(1)'
+        })
+        ),
+        state('on', style({
+          backgroundColor: '#dcdcdc',
+          transform: 'scale(0.95)'
+        })
+        ),
+        transition('off <=> on', animate('100ms ease-out'))
+      ]
+    )
+  ]
 })
 export class BreadSelectComponent implements OnInit {
+  changeOne: string = 'off';
+  changeTwo: string = 'off';
 
-  constructor(private orderService:OrderService) { }
+  constructor(private orderService: OrderService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  setBread(bread:string){
+  setBread(bread: string) {
+    
+   if (bread === "White") {
+      this.changeOne = (this.changeOne === 'off' ? 'on' : 'off');
+    }
+    else {
+      this.changeTwo = (this.changeTwo === 'off' ? 'on' : 'off');
+    }
+
     this.orderService.getCurrentSandwich().bread = bread;
+
   }
+
 }

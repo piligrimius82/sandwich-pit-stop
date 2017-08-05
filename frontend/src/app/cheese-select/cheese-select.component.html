@@ -2,13 +2,11 @@
 <div class="row">
   <div class="col-md-6">
 
-    <md-card class="ingredient_card">
+    <md-card class="ingredient_card" [@selectAnimation]='changeOne' (click)= "setCheese('Cheddar')" >
       <md-card-header class="ingredient_header">
         <md-card-title><h4><b>Cheddar Cheese</b></h4></md-card-title>
       </md-card-header>
-      <button md-button (click)= "setCheese('Cheddar')">
       <img md-card-image src="assets/img/cheddar.jpg">
-   </button>
       <md-card-content>
         <p>
           Certified organic cheddar cheese from local farmers.
@@ -19,13 +17,11 @@
 
   </div>
   <div class="col-md-6">
-    <md-card class="ingredient_card">
+    <md-card class="ingredient_card" [@selectAnimation]='changeTwo' (click)= "setCheese('Swiss')" >
       <md-card-header class="ingredient_header">
         <md-card-title><h4><b>Swiss Cheese</b></h4></md-card-title>
       </md-card-header>
-      <button md-button (click)= "setCheese('Swiss')">
       <img md-card-image src="assets/img/swiss.jpg">
-      </button>
       <md-card-content>
         <p>
           Imported organic swiss cheese from Germany.
