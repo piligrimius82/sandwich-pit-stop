@@ -2,13 +2,11 @@
 <div class="row">
   <div class="col-md-6">
 
-    <md-card class="ingredient_card">
+    <md-card class="ingredient_card" [@selectAnimation]='changeOne' (click)= "setMeat('Ham')" >
       <md-card-header class="ingredient_header">
         <md-card-title><h4><b>Honey Ham</b></h4></md-card-title>
       </md-card-header>
-      <button md-button (click)= "setMeat('Ham')">
       <img md-card-image src="assets/img/ham.jpg">
-   </button>
       <md-card-content>
         <p>
           Honey ham from Virginia.
@@ -19,13 +17,11 @@
 
   </div>
   <div class="col-md-6">
-    <md-card class="ingredient_card">
+    <md-card class="ingredient_card" [@selectAnimation]='changeTwo' (click)= "setMeat('Turkey')" >
       <md-card-header class="ingredient_header">
         <md-card-title><h4><b>Smoked Turkey</b></h4></md-card-title>
       </md-card-header>
-      <button md-button (click)= "setMeat('Turkey')">
       <img md-card-image src="assets/img/turkey.jpg">
-      </button>
       <md-card-content>
         <p>
           Locally produced, fresh turkey

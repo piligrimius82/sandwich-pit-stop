@@ -1,30 +1,69 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../order-utils/order.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 @Component({
   selector: 'app-topping-select',
   templateUrl: './topping-select.component.html',
-  styleUrls: ['./topping-select.component.css']
+  styleUrls: ['./topping-select.component.css'],
+  animations: [
+    trigger(
+      'selectAnimation', [
+        state('off', style({
+          backgroundColor: 'fff',
+          transform: 'scale(1)'
+        })
+        ),
+        state('on', style({
+          backgroundColor: '#dcdcdc',
+          transform: 'scale(0.95)'
+        })
+        ),
+        transition('off <=> on', animate('100ms ease-out'))
+      ]
+    )
+  ]
 })
 export class ToppingSelectComponent implements OnInit {
 
-  constructor(private orderService:OrderService) { }
+  changeOne: string = 'off';
+  changeTwo: string = 'off';
+  changeThree: string = 'off';
+  changeFour: string = 'off';
 
-  ngOnInit() {}
+  constructor(private orderService: OrderService) { }
 
-  setToppings(topping:string){
+  ngOnInit() { }
+
+  setToppings(topping: string) {
+    if (topping === "Lettuce") {
+      this.changeOne = (this.changeOne === 'off' ? 'on' : 'off');
+    }
+    else if (topping === "Tomato") {
+      this.changeTwo = (this.changeTwo === 'off' ? 'on' : 'off');
+    }
+    else if (topping === "Onion") {
+      this.changeThree = (this.changeThree === 'off' ? 'on' : 'off');
+
+    }
+    else {
+      this.changeFour = (this.changeFour === 'off' ? 'on' : 'off');
+
+    }
+
     var sandwich = this.orderService.getCurrentSandwich();
-    if(topping == "Tomato"){
-        sandwich.tomatos = true;
+
+    if (topping == "Tomato") {
+      sandwich.tomatos = true;
     }
-    else if(topping == "Lettuce"){
-        sandwich.lettuce = true;
+    else if (topping == "Lettuce") {
+      sandwich.lettuce = true;
     }
-    else if(topping == "Onion"){
-        sandwich.onions = true;
+    else if (topping == "Onion") {
+      sandwich.onions = true;
     }
-    else {}
+    else { }
   }
 
 }
