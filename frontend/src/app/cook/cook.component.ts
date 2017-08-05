@@ -9,7 +9,10 @@ import { SandwichService } from '../order-utils/sandwich.service';
   selector: 'cook',
   templateUrl: './cook.html',
   styleUrls: ['./cook.css'],
-  providers: [OrderService]
+  providers: [
+    OrderService,
+    SandwichService
+  ]
 })
 
 
@@ -22,7 +25,7 @@ export class CookComponent implements OnInit {
   //private mockOrders: Order[];
   
   
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private sandwichService: SandwichService) { }
 
   ngOnInit() {
     //this.orderService.getOpenOrders().subscribe((activeOrders: Order[]) => this.activeOrders = activeOrders);

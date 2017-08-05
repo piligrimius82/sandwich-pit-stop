@@ -1,7 +1,10 @@
 import { Sandwich} from "../entities/sandwich";
 import { Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 
 export class SandwichService {
+
+    private sandwichUrl = "api/sandwich";
 
     private sandwichId?: number;
     private bread: string;
@@ -21,7 +24,7 @@ export class SandwichService {
     
     private sandwichService: SandwichService;
 
-    constructor(){
+    constructor(private http:Http){
         this.tomatos = false;
         this.lettuce = false;
         this.onions = false;
@@ -80,6 +83,10 @@ export class SandwichService {
 
     getCheese(){
         return this.cheese;
+    }
+
+    updateSandwich(sandwich:Sandwich) {
+        return this.http.put(this.sandwichUrl,sandwich);
     }
 }
 
