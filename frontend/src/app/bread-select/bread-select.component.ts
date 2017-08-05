@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { OrderService } from '../order-utils/order.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -11,7 +11,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger(
       'selectAnimation', [
         state('off', style({
-          backgroundColor: 'fff',
+          backgroundColor: '#fff',
           transform: 'scale(1)'
         })
         ),
@@ -34,16 +34,15 @@ export class BreadSelectComponent implements OnInit {
   ngOnInit() { }
 
   setBread(bread: string) {
-    
-   if (bread === "White") {
-      this.changeOne = (this.changeOne === 'off' ? 'on' : 'off');
+   if (bread.indexOf("Wheat")<0) {
+      this.changeOne = 'on';
+      this.changeTwo = 'off'
     }
     else {
-      this.changeTwo = (this.changeTwo === 'off' ? 'on' : 'off');
+      this.changeOne = 'off';
+      this.changeTwo = 'on'
     }
-
     this.orderService.getCurrentSandwich().bread = bread;
-
   }
 
 }

@@ -11,7 +11,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger(
       'selectAnimation', [
         state('off', style({
-          backgroundColor: 'fff',
+          backgroundColor: '#fff',
           transform: 'scale(1)'
         })
         ),
@@ -39,17 +39,21 @@ export class ToppingSelectComponent implements OnInit {
   setToppings(topping: string) {
     if (topping === "Lettuce") {
       this.changeOne = (this.changeOne === 'off' ? 'on' : 'off');
+      this.changeFour = 'off';
     }
     else if (topping === "Tomato") {
       this.changeTwo = (this.changeTwo === 'off' ? 'on' : 'off');
+      this.changeFour = 'off';
     }
     else if (topping === "Onion") {
       this.changeThree = (this.changeThree === 'off' ? 'on' : 'off');
-
+      this.changeFour = 'off';
     }
     else {
       this.changeFour = (this.changeFour === 'off' ? 'on' : 'off');
-
+      this.changeOne ='off';
+      this.changeTwo ='off';
+      this.changeThree ='off';
     }
 
     var sandwich = this.orderService.getCurrentSandwich();

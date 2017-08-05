@@ -11,7 +11,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     trigger(
       'selectAnimation', [
         state('off', style({
-          backgroundColor: 'fff',
+          backgroundColor: '#fff',
           transform: 'scale(1)'
         })
         ),
@@ -35,10 +35,12 @@ export class MeatSelectComponent implements OnInit {
 
   setMeat(meat:string){
     if (meat === "Ham") {
-      this.changeOne = (this.changeOne === 'off' ? 'on' : 'off');
+      this.changeOne = 'on';
+      this.changeTwo = 'off'
     }
     else {
-      this.changeTwo = (this.changeTwo === 'off' ? 'on' : 'off');
+      this.changeOne = 'off';
+      this.changeTwo = 'on'
     }
     this.orderService.getCurrentSandwich().substance = meat;
   }
