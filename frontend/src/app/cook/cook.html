@@ -5,10 +5,22 @@
 
     <ul>
         <li *ngFor="let sandwich of order.sandwiches" class="currSandwiches">
-        {{sandwich.bread}}&emsp; {{sandwich.substance}}&emsp; {{sandwich.cheese}}&emsp;
-		{{sandwich.tomatos ? "Yes" : "No"}} tomatoes&emsp; {{sandwich.lettuce ? "Yes" : "No"}} lettuce&emsp;
-		{{sandwich.onions ? "Yes" : "No"}} onions&emsp; {{sandwich.dressing}}
-        </li>
+		<span id="sandwich">
+        <span id="bread">{{sandwich.bread}}</span>
+		<span id="substance">{{sandwich.substance}}</span>
+		<span id="cheese">{{sandwich.cheese}}</span>
+		<span id="tomatoes">{{sandwich.tomatos ? "YES" : "NO"}}- tomatoes</span>
+		<span id="lettuce">{{sandwich.lettuce ? "YES" : "NO"}}- lettuce</span>
+		<span id="onions">{{sandwich.onions ? "YES" : "NO"}}- onions</span>
+		<span id="dressing">{{sandwich.dressing}}</span>
+		<div class="btn-group">
+			<button id="prepare" (click)="prepareSandwich(sandwich); backgroundColor =!backgroundColor;">Prepare Sandwich</button>
+			<button id="cancel" (click)="cancelSandwich(sandwich)">Cancel Order</button>
+			<button id="complete" (click)="completeSandwich(sandwich)">Complete Order</button>
+		</div>
+		</span>
+		<br><span id="statusMsg">{{sandwich.status}}</span>
+		</li>
 		<hr>
     </ul>
     </li>
@@ -47,6 +59,3 @@
   </tbody>
 </table> -->
 
-
-<button (click)="cancelOrder()">Cancel Order</button>
-<button (click)="completeOrder()">Complete Order</button>

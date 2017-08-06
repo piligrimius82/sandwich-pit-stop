@@ -1,3 +1,16 @@
 .currOrders{list-style-type: none;}
 
-.currSandwiches{list-style-type: none;}
+.currSandwiches{position: relative; padding-bottom: 50px; list-style-type: none;}
+
+#bread {position: absolute; margin-left: 0px;}
+#substance {position: absolute; margin-left: 70px;}
+#cheese {position: absolute; margin-left: 140px;}
+#tomatoes {position: absolute; margin-left: 210px;}
+#lettuce {position: absolute; margin-left: 310px;}
+#onions {position: absolute; margin-left: 390px;}
+#dressing {position: absolute; margin-left: 480px;}
+#prepare {position: absolute; width: 160px; margin-left: 620px;}
+#cancel {position: absolute; width: 140px; margin-left: 790px;}
+#complete {position: absolute; width: 140px; margin-left: 940px;}
+
+#statusMsg{ color: red; font: bold;} 
