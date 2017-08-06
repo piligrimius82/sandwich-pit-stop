@@ -24,9 +24,9 @@ public class SandwichServiceImp implements SandwichService {
 	@Override
 	@Transactional
 	public Sandwich updateSandwich(Sandwich sandwich) {
-		sandwich.setStatus(SandwichStatusEnum.findByName(sandwich.getStatus()).getId());
+		Order order = orderDAO.findOrderBySandwichId(sandwich.getSandwichId());
+		sandwich.setOrder(order);
 		Sandwich sandwch = sandwichDAO.save(sandwich);
-		Order order = orderDAO.findOne(sandwch.getSandwichId());
 		order.getSandwiches().size();
 		boolean complete = true;
 		for (Sandwich sandw : order.getSandwiches()) {

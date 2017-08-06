@@ -1,3 +1,4 @@
+import {Order} from './order';
 export class Sandwich {
     sandwichId?:number;
     bread:string;
@@ -8,7 +9,7 @@ export class Sandwich {
     dressing:string;
     onions:boolean = false;
     comments:string;
-    orderId:number;
+    order:Order;
     status:string;
     placedTimestamp:Date;
     completeTimestamp:Date;

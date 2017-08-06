@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamdelta.sandwichpitstop.dm.Order;
+import com.teamdelta.sandwichpitstop.dm.Sandwich;
 import com.teamdelta.sandwichpitstop.services.OrderService;
 
 import lombok.Getter;
@@ -22,7 +23,14 @@ public class OrderController {
 	
 	@GetMapping(value={"","/"})
 	public Iterable<Order> findOpenOrders() {
-		return orderService.findOpenOrders();
+		Iterable<Order> orders = orderService.findOpenOrders();
+		for(Order order: orders) {
+			for (Sandwich sandwich: order.getSandwiches()) {
+				sandwich.convertEnumIdsToFullStrings();
+				
+			}
+		}
+		return orders;
 	}
 	
 	@PostMapping(value={"","/"})

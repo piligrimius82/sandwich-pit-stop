@@ -252,5 +252,14 @@ public class Sandwich implements java.io.Serializable {
 		}
 		this.status = SandwichStatusEnum.findByName(this.status).getId();
 	}
+	
+	@Transient
+	public void convertEnumIdsToFullStrings() {
+		this.bread = BreadEnum.findById(this.bread).getName();
+		this.cheese = CheeseEnum.findById(this.cheese).getName();
+		this.dressing = DressingEnum.findById(this.dressing).getName();
+		this.substance = SubstanceEnum.findById(this.substance).getName();
+		this.status = SandwichStatusEnum.findById(this.status).getName();
+	}
 
 }

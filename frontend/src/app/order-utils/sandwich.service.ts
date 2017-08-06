@@ -1,6 +1,7 @@
 import { Sandwich} from "../entities/sandwich";
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class SandwichService {
@@ -10,8 +11,8 @@ export class SandwichService {
     constructor(private http:Http){
     }
 
-    updateSandwich(sandwich:Sandwich) {
-        return this.http.put(this.sandwichUrl,sandwich);
+    updateSandwich(sandwich:Sandwich):Observable<Sandwich> {
+        return this.http.put(this.sandwichUrl,sandwich).map(response => <Sandwich>response.json());
     }
 }
 

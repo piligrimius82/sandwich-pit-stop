@@ -28,6 +28,7 @@ public class SandwichController {
 		if(statusEnum==SandwichStatusEnum.CANCEL||statusEnum==SandwichStatusEnum.COMPLETE) {
 			sandwich.setCompleteTimestamp(new Date());
 		}
+		sandwich.convertToEnumIds();
 		return sandwichService.updateSandwich(sandwich);
 	}
 

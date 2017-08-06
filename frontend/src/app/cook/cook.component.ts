@@ -29,37 +29,14 @@ export class CookComponent implements OnInit {
   constructor(private orderService: OrderService, private sandwichService: SandwichService) { }
 
   ngOnInit() {
-    this.orderService.getOpenOrders().subscribe((activeOrders: Order[]) => this.activeOrders = activeOrders);
-  
-	//mock test data
-	/* this.activeOrders = [
-	{orderId: 100,
-	placedTimestamp: new Date,
-	completeTimestamp: null,
-    customerName: "Ralph",
-    sandwiches: [{sandwichId: 500, bread: "White", substance: "Chicken", cheese: "Swiss", tomatos: false,
-		lettuce: true, dressing: "Mustard",onions: false, comments: "la la la", orderId: 12, status: "New Order",
-		placedTimestamp: new Date, completeTimestamp: null, preparerId: 1001, price: 5}]
-	},
-	{orderId: 101,
-	placedTimestamp: new Date,
-	completeTimestamp: null,
-    customerName: "Ralph",
-    sandwiches: [{sandwichId: 501, bread: "White", substance: "Chicken", cheese: "Swiss", tomatos: false,
-		lettuce: true, dressing: "Mustard",onions: false, comments: "la la la", orderId: 12, status: "New Order",
-		placedTimestamp: new Date, completeTimestamp: null, preparerId: 1001, price: 5},
-		{sandwichId: 502, bread: "Wheat", substance: "Ham", cheese: "American", tomatos: true,
-		lettuce: true, dressing: "Mustard",onions: true, comments: "la la la", orderId: 12, status: "New Order",
-		placedTimestamp: new Date, completeTimestamp: null, preparerId: 1001, price: 5}
-		]
-	}
-  ] */
+		this.orderService.getOpenOrders().subscribe((activeOrders: Order[]) => this.activeOrders = activeOrders);
+
   
   }
 	prepareSandwich(sandwich:Sandwich){
 		sandwich.status = "Preparing";
 		console.log(sandwich.sandwichId + ", " + sandwich.status);
-		this.sandwichService.updateSandwich(sandwich);
+		this.sandwichService.updateSandwich(sandwich).subscribe(s=>sandwich);
 	}
 	
 	cancelSandwich(sandwich:Sandwich){
@@ -67,14 +44,14 @@ export class CookComponent implements OnInit {
 		//console.log(sandwich.sandwichId + ", " + sandwich.status);
 		if(confirm("Are you sure you want to cancel?") == true){
 			sandwich.status="Cancel";
-			this.sandwichService.updateSandwich(sandwich);
+			this.sandwichService.updateSandwich(sandwich).subscribe(s=>sandwich);
 			}
 	}
 	
 	completeSandwich(sandwich:Sandwich){
 		if(confirm("Sandwich is complete?") == true){
 			sandwich.status="Complete";
-			this.sandwichService.updateSandwich(sandwich);
+			this.sandwichService.updateSandwich(sandwich).subscribe(s=>sandwich);
 			}
 	}
  
